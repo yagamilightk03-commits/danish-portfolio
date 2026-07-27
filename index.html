@@ -2,205 +2,182 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Danish — AI Chat Assistants for Local Businesses</title>
+<title>danishcodex | AI Chat Assistants & Websites</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
   :root{
-    --bg:#0A0A14;
-    --bg-2:#100E1E;
-    --glass: rgba(255,255,255,0.055);
-    --glass-border: rgba(255,255,255,0.12);
-    --text:#F3F1FA;
-    --muted: rgba(243,241,250,0.6);
-    --violet:#8B7CFF;
-    --coral:#FF7A66;
-    --lime:#C6FF6E;
-    --grad: linear-gradient(120deg, var(--violet), var(--coral));
+    --bg:#FFFFFF;
+    --bg-soft:#F4F7FC;
+    --card:#FFFFFF;
+    --ink:#10131C;
+    --muted:#5B6472;
+    --line:#E7EAF0;
+    --indigo:#4F46E5;
+    --blue:#2563EB;
+    --cyan:#0EA5E9;
+    --lime:#8FD13F;
+    --grad: linear-gradient(120deg, var(--indigo), var(--cyan));
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
   body{
-    background:var(--bg); color:var(--text);
+    background:var(--bg); color:var(--ink);
     font-family:'Inter', sans-serif;
     overflow-x:hidden;
-    position:relative;
   }
-  h1,h2,h3{ font-family:'Bricolage Grotesque', sans-serif; letter-spacing:-0.02em; }
+  h1,h2,h3{ font-family:'Sora', sans-serif; letter-spacing:-0.02em; }
   a{ color:inherit; }
+  img{ max-width:100%; display:block; }
   .wrap{ max-width:1140px; margin:0 auto; padding:0 24px; position:relative; z-index:2; }
 
-  /* Ambient background orbs */
-  .orb{ position:fixed; border-radius:50%; filter:blur(90px); opacity:0.55; z-index:0; pointer-events:none; }
-  .orb1{ width:520px; height:520px; background:var(--violet); top:-160px; left:-120px; animation:drift1 18s ease-in-out infinite; }
-  .orb2{ width:460px; height:460px; background:var(--coral); top:30%; right:-160px; animation:drift2 22s ease-in-out infinite; }
-  .orb3{ width:380px; height:380px; background:#4C3BFF; bottom:-140px; left:20%; animation:drift1 26s ease-in-out infinite reverse; }
-  @keyframes drift1{ 0%,100%{ transform:translate(0,0);} 50%{ transform:translate(60px,40px);} }
-  @keyframes drift2{ 0%,100%{ transform:translate(0,0);} 50%{ transform:translate(-50px,60px);} }
+  /* Ambient soft color blobs (subtle on white) */
+  .orb{ position:fixed; border-radius:50%; filter:blur(100px); z-index:0; pointer-events:none; }
+  .orb1{ width:480px; height:480px; background:var(--indigo); opacity:0.08; top:-140px; left:-120px; animation:drift1 20s ease-in-out infinite; }
+  .orb2{ width:420px; height:420px; background:var(--cyan); opacity:0.10; top:20%; right:-160px; animation:drift2 24s ease-in-out infinite; }
+  @keyframes drift1{ 0%,100%{ transform:translate(0,0);} 50%{ transform:translate(50px,40px);} }
+  @keyframes drift2{ 0%,100%{ transform:translate(0,0);} 50%{ transform:translate(-40px,50px);} }
 
-  /* cursor spotlight */
   #spotlight{
-    position:fixed; top:0; left:0; width:600px; height:600px; border-radius:50%;
-    background:radial-gradient(circle, rgba(139,124,255,0.14), transparent 70%);
-    pointer-events:none; transform:translate(-50%,-50%); z-index:1; transition:opacity .3s;
+    position:fixed; top:0; left:0; width:500px; height:500px; border-radius:50%;
+    background:radial-gradient(circle, rgba(79,70,229,0.06), transparent 70%);
+    pointer-events:none; transform:translate(-50%,-50%); z-index:1;
   }
 
   /* NAV */
-  nav{ position:sticky; top:0; z-index:50; padding:18px 0; }
-  nav .inner{
-    display:flex; align-items:center; justify-content:space-between;
-    background:var(--glass); border:1px solid var(--glass-border); backdrop-filter:blur(16px);
-    border-radius:100px; padding:12px 12px 12px 22px;
-  }
-  .brand{ font-weight:700; font-size:17px; display:flex; align-items:center; gap:8px; }
-  .brand .dot{ width:8px; height:8px; border-radius:50%; background:var(--lime); box-shadow:0 0 14px var(--lime); }
+  nav{ position:sticky; top:0; z-index:50; padding:16px 0; background:rgba(255,255,255,0.82); backdrop-filter:blur(14px); border-bottom:1px solid var(--line); }
+  nav .inner{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{ display:flex; align-items:center; gap:10px; font-family:'Sora',sans-serif; font-size:19px; font-weight:600; color:var(--ink); }
+  .brand b{ font-weight:800; }
+  .brand-icon{ width:36px; height:36px; }
   .nav-cta{
-    background:var(--text); color:var(--bg); font-weight:700; font-size:14px;
+    background:var(--grad); color:#fff; font-weight:700; font-size:14px;
     padding:11px 22px; border-radius:100px; text-decoration:none;
-    transition:transform .18s ease;
+    transition:transform .18s ease, box-shadow .18s ease; box-shadow:0 8px 20px rgba(37,99,235,0.25);
+    display:inline-flex; align-items:center; gap:8px;
   }
-  .nav-cta:hover{ transform:scale(1.04); }
+  .nav-cta:hover{ transform:translateY(-2px); box-shadow:0 12px 26px rgba(37,99,235,0.35); }
 
   /* HERO */
-  .hero{ padding:80px 0 60px; }
+  .hero{ padding:76px 0 60px; }
   .hero-grid{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; }
   .eyebrow{
     display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600;
-    padding:8px 16px; border-radius:100px; background:var(--glass); border:1px solid var(--glass-border);
-    margin-bottom:26px; color:var(--muted);
+    padding:8px 16px; border-radius:100px; background:var(--bg-soft); border:1px solid var(--line);
+    margin-bottom:24px; color:var(--muted);
   }
   .eyebrow b{ background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; font-weight:700; }
-  h1.headline{ font-size:clamp(38px,5vw,64px); line-height:1.02; font-weight:700; margin-bottom:22px; }
+  h1.headline{ font-size:clamp(36px,5vw,58px); line-height:1.06; font-weight:700; margin-bottom:22px; color:var(--ink); }
   h1.headline .g{ background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
-  .sub{ font-size:18px; color:var(--muted); max-width:480px; margin-bottom:36px; line-height:1.6; }
+  .sub{ font-size:18px; color:var(--muted); max-width:480px; margin-bottom:34px; line-height:1.6; }
   .cta-row{ display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
   .btn-primary{
-    background:var(--grad); color:#0A0A14; font-weight:700; font-size:15px;
-    padding:17px 30px; border-radius:100px; text-decoration:none; display:inline-flex; align-items:center; gap:10px;
-    transition:transform .2s ease, box-shadow .2s ease; box-shadow:0 10px 30px rgba(139,124,255,0.3);
+    background:var(--grad); color:#fff; font-weight:700; font-size:15px;
+    padding:16px 30px; border-radius:100px; text-decoration:none; display:inline-flex; align-items:center; gap:10px;
+    transition:transform .2s ease, box-shadow .2s ease; box-shadow:0 10px 26px rgba(37,99,235,0.28);
   }
-  .btn-primary:hover{ transform:translateY(-3px) scale(1.02); box-shadow:0 16px 40px rgba(255,122,102,0.35); }
-  .btn-ghost{ font-weight:600; font-size:15px; text-decoration:none; color:var(--text); border-bottom:1px solid var(--glass-border); padding-bottom:3px; }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 14px 34px rgba(37,99,235,0.36); }
+  .btn-ghost{ font-weight:600; font-size:15px; text-decoration:none; color:var(--ink); border-bottom:1px solid var(--line); padding-bottom:3px; }
 
-  /* Trust row */
-  .trust{ display:flex; gap:28px; margin-top:44px; flex-wrap:wrap; }
+  .trust{ display:flex; gap:30px; margin-top:44px; flex-wrap:wrap; }
   .trust div{ font-size:13px; color:var(--muted); }
-  .trust strong{ display:block; font-size:22px; font-family:'Bricolage Grotesque',sans-serif; color:var(--text); }
+  .trust strong{ display:block; font-size:22px; font-family:'Sora',sans-serif; color:var(--ink); }
 
-  /* PHONE / demo card with tilt */
+  /* PHONE / demo card */
   .tilt-wrap{ perspective:1200px; }
   .phone{
-    background:var(--glass); border:1px solid var(--glass-border); border-radius:26px;
-    padding:20px; backdrop-filter:blur(20px);
-    box-shadow:0 40px 90px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+    background:var(--card); border:1px solid var(--line); border-radius:24px;
+    padding:20px; box-shadow:0 30px 70px rgba(16,19,28,0.12);
     max-width:370px; margin-left:auto;
     transform-style:preserve-3d; transition:transform .1s ease;
   }
-  .phone-head{ display:flex; align-items:center; gap:10px; padding:6px 6px 16px; border-bottom:1px solid var(--glass-border); margin-bottom:14px; }
+  .phone-head{ display:flex; align-items:center; gap:10px; padding:6px 6px 16px; border-bottom:1px solid var(--line); margin-bottom:14px; }
   .phone-avatar{ width:36px; height:36px; border-radius:50%; background:var(--grad); }
   .phone-name{ font-weight:700; font-size:14px; }
-  .phone-status{ font-size:11px; color:var(--lime); display:flex; align-items:center; gap:5px; }
-  .phone-status::before{ content:''; width:6px; height:6px; border-radius:50%; background:var(--lime); box-shadow:0 0 8px var(--lime); }
+  .phone-status{ font-size:11px; color:#16A34A; display:flex; align-items:center; gap:5px; }
+  .phone-status::before{ content:''; width:6px; height:6px; border-radius:50%; background:#16A34A; }
   .phone-body{ height:340px; display:flex; flex-direction:column; gap:10px; justify-content:flex-end; }
-  .bubble{ max-width:82%; padding:11px 15px; border-radius:16px; font-size:13.5px; opacity:0; animation:pop .45s ease forwards; }
-  .bubble.user{ background:var(--grad); color:#0A0A14; align-self:flex-end; border-bottom-right-radius:4px; font-weight:600; }
-  .bubble.bot{ background:rgba(255,255,255,0.06); align-self:flex-start; border-bottom-left-radius:4px; border:1px solid var(--glass-border); }
-  @keyframes pop{ from{opacity:0; transform:translateY(8px) scale(.98);} to{opacity:1; transform:translateY(0) scale(1);} }
+  .bubble{ max-width:82%; padding:11px 15px; border-radius:16px; font-size:13.5px; opacity:0; animation:pop .4s ease forwards; }
+  .bubble.user{ background:var(--grad); color:#fff; align-self:flex-end; border-bottom-right-radius:4px; font-weight:600; }
+  .bubble.bot{ background:var(--bg-soft); color:var(--ink); align-self:flex-start; border-bottom-left-radius:4px; border:1px solid var(--line); }
+  @keyframes pop{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
   .b1{animation-delay:.2s} .b2{animation-delay:1.1s} .b3{animation-delay:2.4s} .b4{animation-delay:3.3s} .b5{animation-delay:4.6s} .b6{animation-delay:5.5s}
   .phone-input{ display:flex; gap:8px; margin-top:14px; }
-  .phone-input div{ flex:1; background:rgba(255,255,255,0.06); border-radius:100px; height:40px; border:1px solid var(--glass-border); }
+  .phone-input div{ flex:1; background:var(--bg-soft); border-radius:100px; height:40px; border:1px solid var(--line); }
 
   /* SECTIONS */
-  section{ padding:100px 0; }
-  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  section{ padding:88px 0; }
+  .reveal{ opacity:0; transform:translateY(12px); transition:opacity .35s ease, transform .35s ease; }
   .reveal.in{ opacity:1; transform:translateY(0); }
-  .kicker{ font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--coral); margin-bottom:16px; }
-  h2.section-title{ font-size:clamp(28px,3.6vw,42px); font-weight:700; margin-bottom:16px; max-width:640px; }
-  .section-sub{ color:var(--muted); font-size:16px; max-width:560px; margin-bottom:52px; }
+  .kicker{ font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--blue); margin-bottom:16px; }
+  h2.section-title{ font-size:clamp(28px,3.6vw,40px); font-weight:700; margin-bottom:16px; max-width:640px; color:var(--ink); }
+  .section-sub{ color:var(--muted); font-size:16px; max-width:560px; margin-bottom:48px; }
 
   .problem-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
   .card{
-    background:var(--glass); border:1px solid var(--glass-border); border-radius:20px; padding:30px;
-    transition:transform .25s ease, border-color .25s ease;
+    background:var(--bg-soft); border:1px solid var(--line); border-radius:18px; padding:30px;
+    transition:transform .2s ease, box-shadow .2s ease;
   }
-  .card:hover{ transform:translateY(-6px); border-color:rgba(139,124,255,0.4); }
-  .card .q{ font-family:'Bricolage Grotesque',sans-serif; font-size:24px; margin-bottom:14px; color:var(--violet); }
+  .card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rgba(16,19,28,0.08); }
+  .card .q{ font-family:'Sora',sans-serif; font-size:22px; margin-bottom:12px; color:var(--indigo); font-weight:700; }
   .card p{ color:var(--muted); font-size:14.5px; }
+
+  /* WORK */
+  .work-card{ background:var(--bg-soft); border:1px solid var(--line); border-radius:22px; display:grid; grid-template-columns:1fr 1fr; overflow:hidden; }
+  .work-preview{ background:#EEF1F8; padding:30px; display:flex; align-items:center; justify-content:center; }
+  .browser-frame{ background:#fff; border-radius:14px; overflow:hidden; width:100%; box-shadow:0 20px 46px rgba(16,19,28,0.14); border:1px solid var(--line); }
+  .browser-bar{ display:flex; gap:6px; padding:10px 14px; background:#F1F3F8; border-bottom:1px solid var(--line); }
+  .browser-bar span{ width:9px; height:9px; border-radius:50%; background:#D7DCE5; }
+  .work-info{ padding:44px; display:flex; flex-direction:column; justify-content:center; }
+  .work-tag{ font-size:12px; font-weight:700; color:var(--blue); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:14px; }
+  .work-info h3{ font-size:23px; margin-bottom:14px; font-weight:700; }
+  .work-info p{ color:var(--muted); font-size:14.5px; margin-bottom:22px; }
+  .work-links a{ font-size:14px; font-weight:700; text-decoration:none; padding:12px 22px; border-radius:100px; background:var(--grad); color:#fff; }
+  @media(max-width:860px){ .work-card{ grid-template-columns:1fr; } }
 
   /* STEPS */
   .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
   .step-num{
-    font-family:'Bricolage Grotesque',sans-serif; font-size:15px; font-weight:700;
-    width:52px; height:52px; border-radius:16px; display:flex; align-items:center; justify-content:center;
-    background:var(--grad); color:#0A0A14; margin-bottom:20px;
+    font-family:'Sora',sans-serif; font-size:15px; font-weight:700;
+    width:50px; height:50px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+    background:var(--grad); color:#fff; margin-bottom:18px;
   }
-  .step h3{ font-size:19px; margin-bottom:10px; font-weight:600; }
+  .step h3{ font-size:18px; margin-bottom:10px; font-weight:700; }
   .step p{ color:var(--muted); font-size:14.5px; }
 
   /* PRICING */
   .price-grid{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:22px; }
   .price-card{
-    background:var(--glass); border:1px solid var(--violet); border-radius:24px; padding:34px 30px;
-    position:relative; overflow:hidden; display:flex; flex-direction:column; height:100%;
+    background:var(--card); border:1px solid var(--line); border-radius:22px; padding:34px 30px;
+    display:flex; flex-direction:column; height:100%; position:relative;
+    box-shadow:0 4px 16px rgba(16,19,28,0.04);
   }
-  .price-card.alt{ border-color:var(--coral); }
-  .price-card.bundle{
-    border-color:var(--lime); background:linear-gradient(160deg, rgba(198,255,110,0.08), var(--glass));
-    transform:scale(1.03);
-  }
-  .best-tag{
-    position:absolute; top:18px; right:18px; background:var(--lime); color:#0A0A14;
-    font-size:11px; font-weight:800; padding:4px 12px; border-radius:100px; letter-spacing:0.03em;
-  }
+  .price-card.bundle{ border:2px solid var(--indigo); box-shadow:0 20px 46px rgba(79,70,229,0.14); transform:scale(1.03); }
+  .best-tag{ position:absolute; top:-13px; left:30px; background:var(--grad); color:#fff; font-size:11px; font-weight:800; padding:5px 14px; border-radius:100px; letter-spacing:0.03em; }
   .price-card h3{ font-size:20px; margin-bottom:8px; font-weight:700; }
   .price-list{ list-style:none; margin-top:18px; display:flex; flex-direction:column; gap:10px; flex:1; }
   .price-list li{ font-size:13.5px; color:var(--muted); display:flex; gap:9px; }
-  .price-list li::before{ content:'✓'; color:var(--lime); font-weight:800; }
-  .price-num{ font-family:'Bricolage Grotesque',sans-serif; font-size:32px; font-weight:800; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; margin-top:22px; }
-  .price-card.bundle .price-num{ background:linear-gradient(120deg, var(--lime), var(--violet)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .price-list li::before{ content:'\2713'; color:#16A34A; font-weight:800; }
+  .price-num{ font-family:'Sora',sans-serif; font-size:34px; font-weight:800; color:var(--ink); margin-top:22px; }
+  .price-num span{ font-size:15px; color:var(--muted); font-weight:500; }
   .price-note{ font-size:12px; color:var(--muted); margin-top:6px; }
+  .save-tag{ display:inline-block; margin-top:10px; background:#EAFBEF; color:#16A34A; font-size:12px; font-weight:700; padding:4px 10px; border-radius:8px; }
 
-  .final-cta{ text-align:center; padding:110px 0 130px; }
-  .final-cta h2{ font-size:clamp(30px,4.5vw,48px); max-width:640px; margin:0 auto 20px; font-weight:700; }
-  .final-cta p{ color:var(--muted); max-width:480px; margin:0 auto 36px; }
+  .final-cta{ text-align:center; padding:100px 0 120px; background:var(--bg-soft); }
+  .final-cta h2{ font-size:clamp(30px,4.5vw,46px); max-width:640px; margin:0 auto 20px; font-weight:700; }
+  .final-cta p{ color:var(--muted); max-width:480px; margin:0 auto 34px; }
 
-  /* WORK / PORTFOLIO */
-  .work-card{
-    background:var(--glass); border:1px solid var(--glass-border); border-radius:24px;
-    display:grid; grid-template-columns:1fr 1fr; overflow:hidden;
-  }
-  .work-preview{
-    background:linear-gradient(135deg, #1a1030, #0A0A14);
-    padding:32px; display:flex; align-items:center; justify-content:center;
-    position:relative;
-  }
-  .work-preview img{ width:100%; border-radius:14px; display:block; box-shadow:0 20px 50px rgba(0,0,0,0.5); }
-  .browser-frame{
-    background:#0e0c1a; border-radius:14px; overflow:hidden; width:100%;
-    box-shadow:0 20px 50px rgba(0,0,0,0.5); border:1px solid var(--glass-border);
-  }
-  .browser-bar{ display:flex; gap:6px; padding:10px 14px; background:#161326; }
-  .browser-bar span{ width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,0.2); }
-  .work-info{ padding:44px; display:flex; flex-direction:column; justify-content:center; }
-  .work-tag{ font-size:12px; font-weight:700; color:var(--lime); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:14px; }
-  .work-info h3{ font-size:24px; margin-bottom:14px; font-weight:700; }
-  .work-info p{ color:var(--muted); font-size:14.5px; margin-bottom:22px; }
-  .work-links{ display:flex; gap:14px; }
-  .work-links a{
-    font-size:14px; font-weight:700; text-decoration:none; padding:12px 22px; border-radius:100px;
-  }
-  .work-links .live{ background:var(--grad); color:#0A0A14; }
-  .work-links .code{ border:1px solid var(--glass-border); color:var(--text); }
-  @media(max-width:860px){ .work-card{ grid-template-columns:1fr; } }
+  footer{ border-top:1px solid var(--line); padding:36px 0; font-size:13px; color:var(--muted); }
   footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
-  .socials{ display:flex; gap:14px; }
+  .socials{ display:flex; gap:12px; }
   .socials a{
-    width:38px; height:38px; border-radius:50%; background:var(--glass); border:1px solid var(--glass-border);
-    display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:15px;
-    transition:transform .18s ease, border-color .18s ease;
+    width:38px; height:38px; border-radius:50%; background:var(--bg-soft); border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:15px; color:var(--ink);
+    transition:transform .18s ease, background .18s ease, color .18s ease;
   }
-  .socials a:hover{ transform:translateY(-3px); border-color:var(--violet); }
+  .socials a:hover{ transform:translateY(-3px); background:var(--grad); color:#fff; }
 
   @media(max-width:860px){
     .hero-grid{ grid-template-columns:1fr; }
@@ -215,22 +192,34 @@
 
 <div class="orb orb1"></div>
 <div class="orb orb2"></div>
-<div class="orb orb3"></div>
 <div id="spotlight"></div>
 
 <nav>
   <div class="wrap inner">
-    <div class="brand"><span class="dot"></span>Danish</div>
-    <a class="nav-cta" href="https://wa.me/923273015107" target="_blank">Chat on WhatsApp</a>
+    <div class="brand">
+      <svg class="brand-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="navgrad" x1="10%" y1="0%" x2="90%" y2="100%">
+            <stop offset="0%" stop-color="#4F46E5"/><stop offset="55%" stop-color="#2563EB"/><stop offset="100%" stop-color="#0EA5E9"/>
+          </linearGradient>
+        </defs>
+        <rect x="20" y="20" width="472" height="472" rx="130" fill="url(#navgrad)"/>
+        <path d="M 213 168 L 138 256 L 213 344" fill="none" stroke="#fff" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 299 168 L 374 256 L 299 344" fill="none" stroke="#fff" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="256" cy="349" r="19" fill="#CBFF6E"/>
+      </svg>
+      danish<b>codex</b>
+    </div>
+    <a class="nav-cta" href="https://wa.me/923273015107" target="_blank"><i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp</a>
   </div>
 </nav>
 
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow">✨ <b>AI chat assistants</b> & <b>websites</b> for local businesses</div>
+      <div class="eyebrow">✨ <b>AI chat assistants</b> &amp; websites</div>
       <h1 class="headline">Stop typing the<br><span class="g">same reply</span><br>fifty times a day.</h1>
-      <p class="sub">I build AI chat assistants and professional websites for local businesses — from answering customer questions automatically, to giving your business a proper online presence.</p>
+      <p class="sub">I build AI chat assistants and professional websites for local businesses. From answering customer questions automatically to giving your business a proper online presence.</p>
       <div class="cta-row">
         <a class="btn-primary" href="https://wa.me/923273015107" target="_blank">Get yours built →</a>
         <a class="btn-ghost" href="#demo">See it work</a>
@@ -238,7 +227,7 @@
       <div class="trust">
         <div><strong>24/7</strong>Always replying</div>
         <div><strong>&lt;2s</strong>Response time</div>
-        <div><strong>Rs 5k+</strong>Starting price</div>
+        <div><strong>$20+</strong>Starting price</div>
       </div>
     </div>
 
@@ -253,11 +242,11 @@
         </div>
         <div class="phone-body">
           <div class="bubble user b1">What time are you open until?</div>
-          <div class="bubble bot b2">We're open every day, 10 AM to 10 PM — including Sundays! 😊</div>
+          <div class="bubble bot b2">We're open every day, 10 AM to 10 PM, including Sundays! 😊</div>
           <div class="bubble user b3">Do you deliver cakes?</div>
           <div class="bubble bot b4">Yes! Delivery within the city takes 2-3 hours.</div>
           <div class="bubble user b5">What's the price for a 1kg chocolate cake?</div>
-          <div class="bubble bot b6">1kg Chocolate Cake — Rs. 1,800. Should I confirm the order? 🎂</div>
+          <div class="bubble bot b6">1kg Chocolate Cake: Rs. 1,800. Should I confirm the order? 🎂</div>
         </div>
         <div class="phone-input"><div></div></div>
       </div>
@@ -265,27 +254,15 @@
   </div>
 </section>
 
-<section>
+<section style="padding-top:0;">
   <div class="wrap reveal">
     <div class="kicker">The Problem</div>
     <h2 class="section-title">Every customer asks the same three questions.</h2>
-    <p class="section-sub">Timing, price, delivery — you answer them a hundred times a week, one WhatsApp chat at a time. That's hours you're not spending on the actual business.</p>
+    <p class="section-sub">Timing, price, delivery: you answer them a hundred times a week, one WhatsApp chat at a time. That's hours you're not spending on the actual business.</p>
     <div class="problem-grid">
-      <div class="card"><div class="q">"Are you open?"</div><p>This question comes in twenty times a day — and you type the same answer every time.</p></div>
+      <div class="card"><div class="q">"Are you open?"</div><p>This question comes in twenty times a day, and you type the same answer every time.</p></div>
       <div class="card"><div class="q">"What's the price?"</div><p>The customer waits for a reply, and if it's late, they go to someone else instead.</p></div>
-      <div class="card"><div class="q">"Do you deliver?"</div><p>Even at 11 PM someone messages — who's around to answer that?</p></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap reveal">
-    <div class="kicker">How It Works</div>
-    <h2 class="section-title">From your business to a live assistant — in three steps.</h2>
-    <div class="steps">
-      <div class="step"><div class="step-num">01</div><h3>You send the details</h3><p>Business name, timing, products, delivery, payment — just a short list.</p></div>
-      <div class="step"><div class="step-num">02</div><h3>I build it</h3><p>The AI assistant gets customized for your business, in your brand's colors.</p></div>
-      <div class="step"><div class="step-num">03</div><h3>It goes live</h3><p>You get a link — add it to your WhatsApp bio, Instagram, or website. That's it.</p></div>
+      <div class="card"><div class="q">"Do you deliver?"</div><p>Even at 11 PM someone messages. Who's around to answer that?</p></div>
     </div>
   </div>
 </section>
@@ -293,7 +270,7 @@
 <section>
   <div class="wrap reveal">
     <div class="kicker">My Work</div>
-    <h2 class="section-title">This isn't a mockup — it's live. Go ahead, try it.</h2>
+    <h2 class="section-title">This isn't a mockup. It's live, so go ahead and try it.</h2>
     <p class="section-sub">This is a real AI chat assistant I built and deployed myself. Click below, ask it a question, and see exactly what your customers would experience.</p>
     <div class="work-card">
       <div class="work-preview">
@@ -301,18 +278,30 @@
           <div class="browser-bar"><span></span><span></span><span></span></div>
           <img src="chatbot-screenshot.png" alt="AI Chatbot Demo Screenshot" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div style="display:none; height:300px; align-items:center; justify-content:center; color:var(--muted); font-size:13px; padding:20px; text-align:center;">
-            Add your screenshot here — save it as "chatbot-screenshot.png" next to this file.
+            Add your screenshot here. Save it as "chatbot-screenshot.png" next to this file.
           </div>
         </div>
       </div>
       <div class="work-info">
         <div class="work-tag">AI Chat Assistant</div>
         <h3>Danish's Smart Assistant</h3>
-        <p>A real, working AI-powered chatbot built with Python, Flask, and Google Gemini. Try asking about timing, delivery, or pricing — it'll answer just like it would for your customers.</p>
+        <p>A real, working AI-powered chatbot built with Python, Flask, and Google Gemini. Try asking about timing, delivery, or pricing. It'll answer just like it would for your customers.</p>
         <div class="work-links">
-          <a class="live" href="https://shop-chatbot-32l9.onrender.com" target="_blank">Try It Yourself →</a>
+          <a href="https://shop-chatbot-32l9.onrender.com" target="_blank">Try It Yourself →</a>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap reveal">
+    <div class="kicker">How It Works</div>
+    <h2 class="section-title">From your business to a live assistant in three simple steps.</h2>
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><h3>You send the details</h3><p>Business name, timing, products, delivery, payment: just a short list.</p></div>
+      <div class="step"><div class="step-num">02</div><h3>I build it</h3><p>The AI assistant gets customized for your business, in your brand's colors.</p></div>
+      <div class="step"><div class="step-num">03</div><h3>It goes live</h3><p>You get a link to add to your WhatsApp bio, Instagram, or website. That's it.</p></div>
     </div>
   </div>
 </section>
@@ -331,10 +320,10 @@
           <li>Live link for WhatsApp, Instagram, or web</li>
           <li>Free hosting while traffic stays normal</li>
         </ul>
-        <div class="price-num">Rs 5,000 – 7,000</div>
+        <div class="price-num">$20</div>
         <div class="price-note">One-time setup.</div>
       </div>
-      <div class="price-card alt">
+      <div class="price-card">
         <h3>Business Website</h3>
         <p style="color:var(--muted); font-size:13.5px;">A professional single-page website that represents your business online.</p>
         <ul class="price-list">
@@ -343,7 +332,7 @@
           <li>Contact / WhatsApp button built in</li>
           <li>Free hosting included</li>
         </ul>
-        <div class="price-num">Rs 7,000</div>
+        <div class="price-num">$25</div>
         <div class="price-note">One-time setup.</div>
       </div>
       <div class="price-card bundle">
@@ -356,44 +345,42 @@
           <li>Fully connected and branded together</li>
           <li>Free hosting for both</li>
         </ul>
-        <div class="price-num">Rs 10,000</div>
-        <div class="price-note">One-time setup. Save Rs 2,000+ vs buying separately.</div>
+        <div class="price-num">$40</div>
+        <div class="save-tag">Save $5 vs buying separately</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="final-cta reveal">
+<section class="final-cta reveal" style="border-top:1px solid var(--line);">
   <div class="wrap">
     <h2>Ready to stop repeating yourself?</h2>
-    <p>Send a WhatsApp message, tell me about your business — your assistant can be live within 48 hours.</p>
+    <p>Send a WhatsApp message and tell me about your business. Your assistant can be live within 48 hours.</p>
     <a class="btn-primary" href="https://wa.me/923273015107" target="_blank">Message Danish on WhatsApp →</a>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <span>Built by Danish</span>
+    <span>Built by danishcodex</span>
     <div class="socials">
-      <a href="https://wa.me/923273015107" target="_blank" title="WhatsApp">💬</a>
-      <a href="https://facebook.com/YOUR_FACEBOOK_PAGE" target="_blank" title="Facebook">f</a>
-      <a href="https://instagram.com/YOUR_INSTAGRAM" target="_blank" title="Instagram">📷</a>
-      <a href="https://tiktok.com/@YOUR_TIKTOK" target="_blank" title="TikTok">♪</a>
-      <a href="https://fiverr.com/YOUR_FIVERR_USERNAME" target="_blank" title="Fiverr">Fv</a>
+      <a href="https://wa.me/923273015107" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://facebook.com/https://www.facebook.com/share/1JTqu7e1DZ/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://instagram.com/https://www.instagram.com/danishcodesx?igsh=ZWY1bWJ0dTk1dTdp&utm_source=qr" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://tiktok.com/@https://www.tiktok.com/@danishcodex?_r=1&_t=ZN-98NZQ3mBSp4" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://fiverr.com/YOUR_FIVERR_USERNAME" target="_blank" title="Fiverr"><i class="fa-brands fa-fiverr"></i></a>
     </div>
     <span>© 2026</span>
   </div>
 </footer>
 
 <script>
-  // cursor spotlight
   const spot = document.getElementById('spotlight');
   document.addEventListener('mousemove', e=>{
     spot.style.left = e.clientX + 'px';
     spot.style.top = e.clientY + 'px';
   });
 
-  // 3D tilt on phone card
   const phone = document.querySelector('.phone');
   const tiltWrap = document.querySelector('.tilt-wrap');
   if(tiltWrap){
@@ -401,15 +388,14 @@
       const r = tiltWrap.getBoundingClientRect();
       const x = (e.clientX - r.left)/r.width - 0.5;
       const y = (e.clientY - r.top)/r.height - 0.5;
-      phone.style.transform = `rotateY(${x*10}deg) rotateX(${-y*10}deg)`;
+      phone.style.transform = `rotateY(${x*8}deg) rotateX(${-y*8}deg)`;
     });
     tiltWrap.addEventListener('mouseleave', ()=>{ phone.style.transform = 'rotateY(0) rotateX(0)'; });
   }
 
-  // scroll reveal
   const obs = new IntersectionObserver(entries=>{
     entries.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('in'); });
-  }, {threshold:0.15});
+  }, {threshold:0.01, rootMargin:"0px 0px -40px 0px"});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 
